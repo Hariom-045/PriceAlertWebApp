@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using PriceAlertsWebApplication;
 using PriceAlertsWebApplication.Models;
 using PriceAlertsWebApplication.Services;
@@ -14,8 +11,19 @@ builder.Services.Configure<TwelveAPISettings>(
 builder.Services.AddScoped<IGoldHttpService, GoldHttpService>();
 builder.Services.AddScoped<IGoldService, GoldService>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint(
+        "/swagger/v1/swagger.json",
+        "Price Alerts API V1");
+
+    options.RoutePrefix = string.Empty;
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -24,8 +32,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

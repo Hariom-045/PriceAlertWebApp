@@ -16,12 +16,12 @@ public class HomeController : Controller
         _goldService = goldService;
         _logger = logger;
     }
-    [HttpPost]
-    public IActionResult CreateAlert(
+    [HttpPost("createAlert")]
+    public async Task<IActionResult> CreateAlert(
         GoldPriceRequestModel goldPriceRequestModel)
     {
-         _goldService.CreateGoldPriceAlert(goldPriceRequestModel);
-        return Ok("Alert created successfully");
+         var result = await _goldService.CreateGoldPriceAlert(goldPriceRequestModel);
+        return Ok(result);
     }
 
 }

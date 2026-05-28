@@ -1,8 +1,9 @@
 using PriceAlertsWebApplication.Models;
+using PriceAlertsWebApplication.Models.ResponseModels;
 
 namespace PriceAlertsWebApplication;
 
 public interface IGoldService
 {
-    public void CreateGoldPriceAlert(GoldPriceRequestModel goldPriceRequestModel);
+    public Task<GoldPriceResponseModel.GoldPriceResponse> CreateGoldPriceAlert(GoldPriceRequestModel goldPriceRequestModel);
 }
