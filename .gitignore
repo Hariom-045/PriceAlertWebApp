@@ -1,0 +1,19 @@
+bin/
+obj/
+.idea/
+.vs/
+node_modules/
+dist/
+build/
+wwwroot/lib/
+*.user
+*.suo
+.DS_Store
+bin/
+obj/
+.idea/
+.vs/
+*.user
+*.suo
+.DS_Store
+/Price alerts web app/PriceAlertsWebApplication/appsettings.json
