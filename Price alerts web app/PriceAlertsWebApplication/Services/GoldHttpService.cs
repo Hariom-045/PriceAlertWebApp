@@ -32,7 +32,6 @@ public class GoldHttpService : IGoldHttpService
              {
                  response.EnsureSuccessStatusCode();
                  var body = await response.Content.ReadAsStringAsync();
-                 Console.WriteLine(body);
                  var goldResponse = JsonSerializer.Deserialize<GoldPriceResponseModel.GoldPriceResponse>(body);
                  return goldResponse;
              }

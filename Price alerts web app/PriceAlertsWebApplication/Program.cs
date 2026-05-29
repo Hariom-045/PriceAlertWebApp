@@ -7,9 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.Configure<TwelveAPISettings>(
     builder.Configuration.GetSection("TwelveAPISettings"));
+builder.Services.Configure<TelegramAPISettings>(
+    builder.Configuration.GetSection("TelegramAPISettings"));
 
 builder.Services.AddScoped<IGoldHttpService, GoldHttpService>();
 builder.Services.AddScoped<IGoldService, GoldService>();
+builder.Services.AddScoped<ITelegramNotificationService, TelegramNotificationService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 
