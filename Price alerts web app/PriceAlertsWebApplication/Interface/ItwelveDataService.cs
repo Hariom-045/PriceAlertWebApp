@@ -3,7 +3,7 @@ using PriceAlertsWebApplication.Models.ResponseModels;
 
 namespace PriceAlertsWebApplication;
 
-public interface IGoldHttpService
+public interface ItwelveDataService
 {
-    public Task<GoldPriceResponseModel.GoldPriceResponse> GetLatestGoldPrice();
+    public Task<GoldPriceResponse> GetLatestGoldPrice();
 }
